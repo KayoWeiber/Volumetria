@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volumetria de Cerveja</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <section class="container">
+        
+        <form id="configForm" class="active">
+            <h1>Configuração Inicial</h1>
+            <label for="pesoLata">Peso da lata vazia (g):</label>
+            <input type="number" id="pesoLata" step="0.01" required>
+
+            <label for="pesoTampa">Peso da tampa (g):</label>
+            <input type="number" id="pesoTampa" step="0.01" required>
+
+            <label for="densidade">Densidade da cerveja (g/mL):</label>
+            <input type="number" id="densidade" step="0.01" required>
+
+            <label for="limiar">Limiar de enchimento (mL):</label>
+            <input type="number" id="limiar" required>
+
+            <label for="quantidade">Quantidade no pacote:</label>
+            <select id="quantidade" required>
+                <option value="12">12</option>
+                <option value="15">15</option>
+            </select>
+
+            <button type="button" id="iniciar">Iniciar</button>
+        </form>
+
+       
+        <form id="pesosForm" class="hidden">
+            <h1>Entrada de Pesos</h1>
+            <div id="pesosInputs"></div>
+            <button type="button" id="calcular">Calcular</button>
+        </form>
+
+        
+        <div id="resultado" class="hidden"></div>
+    </section>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
