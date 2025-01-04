@@ -80,8 +80,8 @@ calcularBtn.addEventListener("click", () => {
     const maiorVolume = Math.max(...volumes).toFixed(2);
 
     let mensagem = `<h2>Resultados</h2>
-                    <p>Peso de cada lata: ${pesosCheios.join(" g, ")} g</p>
-                    <p>Volumetria de cada lata: ${volumes.join(" ml, ")} mL</p>
+                    <p>Peso de cada lata: ${pesosCheios.join("g, ")} g</p>
+                    <p>Volumetria de cada lata: ${volumes.join("ml, ")} mL</p>
                     <p>Volume médio: ${volumeMedio} mL</p>
                     <p>Menor volume: ${menorVolume} mL</p>
                     <p>Maior volume: ${maiorVolume} mL</p>`;
