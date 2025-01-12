@@ -1,14 +1,39 @@
-
 const configForm = document.getElementById("configForm");
 const pesosForm = document.getElementById("pesosForm");
 const resultadoDiv = document.getElementById("resultado");
 const iniciarBtn = document.getElementById("iniciar");
 const calcularBtn = document.getElementById("calcular");
 const pesosInputsDiv = document.getElementById("pesosInputs");
-
+const telaInicial = document.getElementById("telaInicial");
+const btnUnidade = document.getElementById("btnUnidade");
+const btnPacote = document.getElementById("btnPacote");
+const quantidadeLabel = document.getElementById("quantidadeLabel");
+const quantidadeSelect = document.getElementById("quantidade");
 
 let pesoLata, pesoTampa, densidade, limiar, quantidade;
 
+function limparCamposDinamicos() {
+    pesosInputsDiv.innerHTML = "";
+    resultadoDiv.innerHTML = "";
+    pesosForm.classList.add("hidden");
+    resultadoDiv.classList.add("hidden");
+}
+
+btnUnidade.addEventListener("click", () => {
+    limparCamposDinamicos();
+    telaInicial.classList.add("hidden");
+    configForm.classList.remove("hidden");
+    quantidadeLabel.classList.add("hidden");
+    quantidadeSelect.classList.add("hidden");
+});
+
+btnPacote.addEventListener("click", () => {
+    limparCamposDinamicos();
+    telaInicial.classList.add("hidden");
+    configForm.classList.remove("hidden");
+    quantidadeLabel.classList.remove("hidden");
+    quantidadeSelect.classList.remove("hidden");
+});
 
 window.addEventListener("load", () => {
     const savedConfig = JSON.parse(localStorage.getItem("config"));
@@ -21,26 +46,29 @@ window.addEventListener("load", () => {
     }
 });
 
-
 iniciarBtn.addEventListener("click", () => {
     pesoLata = parseFloat(document.getElementById("pesoLata").value);
     pesoTampa = parseFloat(document.getElementById("pesoTampa").value);
     densidade = parseFloat(document.getElementById("densidade").value);
     limiar = parseFloat(document.getElementById("limiar").value);
-    quantidade = parseInt(document.getElementById("quantidade").value);
 
-    if (!pesoLata || !pesoTampa || !densidade || !limiar || !quantidade) {
+    if (quantidadeSelect.classList.contains("hidden")) {
+        quantidade = 1;
+    } else {
+        quantidade = parseInt(document.getElementById("quantidade").value);
+    }
+
+    if (!pesoLata || !pesoTampa || !densidade || !limiar || (quantidadeSelect.classList.contains("hidden") ? false : !quantidade)) {
         alert("Por favor, preencha todos os campos.");
         return;
     }
 
-    
     localStorage.setItem(
         "config",
         JSON.stringify({ pesoLata, pesoTampa, densidade, limiar, quantidade })
     );
 
-  
+
     pesosInputsDiv.innerHTML = "";
     for (let i = 1; i <= quantidade; i++) {
         const label = document.createElement("label");
@@ -54,15 +82,12 @@ iniciarBtn.addEventListener("click", () => {
         pesosInputsDiv.appendChild(input);
     }
 
-    // Alternar telas
     configForm.classList.add("hidden");
     pesosForm.classList.remove("hidden");
 });
 
-
 calcularBtn.addEventListener("click", () => {
-    const pesoCheioInputs = document.querySelectorAll(".pesoCheio");
-    const pesosCheios = Array.from(pesoCheioInputs).map(input => parseFloat(input.value));
+    const pesosCheios = Array.from(document.querySelectorAll(".pesoCheio")).map(input => parseFloat(input.value));
 
     if (pesosCheios.includes(NaN)) {
         alert("Por favor, preencha todos os pesos das latas.");
@@ -80,16 +105,16 @@ calcularBtn.addEventListener("click", () => {
     const maiorVolume = Math.max(...volumes).toFixed(2);
 
     let mensagem = `<h2>Resultados</h2>
-                    <p>Peso de cada lata: ${pesosCheios.join("g, ")} g</p>
-                    <p>Volumetria de cada lata: ${volumes.join("ml, ")} mL</p>
+                    <p>Peso das latas cheias: ${pesosCheios.join(", ")} g</p>
+                    <p>Volumetria das latas: ${volumes.join(", ")} mL</p>
                     <p>Volume médio: ${volumeMedio} mL</p>
                     <p>Menor volume: ${menorVolume} mL</p>
                     <p>Maior volume: ${maiorVolume} mL</p>`;
+
     mensagem += volumeMedio < limiar
         ? `<p style="color: red;">Volume médio abaixo do limiar (${limiar} mL).</p>`
         : `<p style="color: green;">Volume médio dentro do padrão.</p>`;
 
-    // Exibir resultados
     pesosForm.classList.add("hidden");
     resultadoDiv.classList.remove("hidden");
     resultadoDiv.innerHTML = mensagem;

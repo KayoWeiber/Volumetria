@@ -62,3 +62,25 @@ button:hover {
     border: 1px solid #b3d4fc;
     border-radius: 5px;
 }
+/* Estilos da Tela Inicial */
+.logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 150px;
+}
+
+#telaInicial button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#telaInicial button:hover {
+    background-color: #0056b3;
+}
