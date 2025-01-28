@@ -114,6 +114,13 @@ calcularBtn.addEventListener("click", () => {
     mensagem += volumeMedio < limiar
         ? `<p style="color: red;">Volume médio abaixo do limiar (${limiar} mL).</p>`
         : `<p style="color: green;">Volume médio dentro do padrão.</p>`;
+    // Adicionar a configuração inicial à mensagem
+    mensagem += `<h2>Configuração Inicial</h2>
+                 <p>Peso da lata vazia: ${pesoLata} g</p>
+                 <p>Peso da tampa: ${pesoTampa} g</p>
+                 <p>Densidade da cerveja: ${densidade} g/mL</p>
+                 <p> Limiar de enchimento: ${limiar} mL</p>
+                 <p>Quantidade no pacote: ${quantidade}</p>`;
 
     pesosForm.classList.add("hidden");
     resultadoDiv.classList.remove("hidden");

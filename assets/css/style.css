@@ -84,3 +84,10 @@ button:hover {
 #telaInicial button:hover {
     background-color: #0056b3;
 }
+#configInicial {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e7f3ff;
+    border: 1px solid #b3d4fc;
+    border-radius: 5px;
+}
