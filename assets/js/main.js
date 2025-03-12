@@ -108,11 +108,13 @@ calcularBtn.addEventListener("click", () => {
                     <p>Peso das latas cheias: ${pesosCheios.join(", ")} g</p>
                     <p>Volumetria das latas: ${volumes.join(", ")} mL</p>
                     <p>Volume médio: ${volumeMedio} mL</p>
+                    <p></p>
                     <p>Menor volume: ${menorVolume} mL</p>
+                    <p></p>
                     <p>Maior volume: ${maiorVolume} mL</p>`;
 
-    mensagem += volumeMedio < limiar
-        ? `<p style="color: red;">Volume médio abaixo do limiar (${limiar} mL).</p>`
+    mensagem += volumeMedio < limiar || volumeMedio > limiar+2
+        ? `<p style="color: red;">Volume médio fora do PADRÃO do limiar (${limiar}mL).</p>`
         : `<p style="color: green;">Volume médio dentro do padrão.</p>`;
     // Adicionar a configuração inicial à mensagem
     mensagem += `<h2>Configuração Inicial</h2>
