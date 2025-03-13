@@ -113,7 +113,7 @@ calcularBtn.addEventListener("click", () => {
                     <p></p>
                     <p>Maior volume: ${maiorVolume} mL</p>`;
 
-    mensagem += volumeMedio < limiar-2 || volumeMedio > limiar+2
+    mensagem += volumeMedio < (limiar-2) || volumeMedio > (limiar+2)
         ? `<p style="color: red;">Volume médio fora do PADRÃO do limiar (${limiar}mL).</p>`
         : `<p style="color: green;">Volume médio dentro do padrão.</p>`;
     // Adicionar a configuração inicial à mensagem
