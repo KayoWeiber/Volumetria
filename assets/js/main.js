@@ -9,6 +9,7 @@ const btnUnidade = document.getElementById("btnUnidade");
 const btnPacote = document.getElementById("btnPacote");
 const quantidadeLabel = document.getElementById("quantidadeLabel");
 const quantidadeSelect = document.getElementById("quantidade");
+const btnSalvar = document.getElementById("salvar");
 
 let pesoLata, pesoTampa, densidade, limiar, quantidade;
 
@@ -127,4 +128,43 @@ calcularBtn.addEventListener("click", () => {
     pesosForm.classList.add("hidden");
     resultadoDiv.classList.remove("hidden");
     resultadoDiv.innerHTML = mensagem;
+    btnSalvar.classList.remove("hidden");
+    btnSalvar.addEventListener("click", async () => {
+        const pesosCheios = Array.from(document.querySelectorAll(".pesoCheio")).map(input => parseFloat(input.value));
+        const volumes = pesosCheios.map(pesoCheio => ((pesoCheio - (pesoLata + pesoTampa)) / densidade).toFixed(2));
+        const volumeMedio = (volumes.reduce((acc, vol) => acc + parseFloat(vol), 0) / volumes.length).toFixed(2);
+        const menorVolume = Math.min(...volumes).toFixed(2);
+        const maiorVolume = Math.max(...volumes).toFixed(2);
+    
+        const dados = {
+            pesosCheios,
+            volumes,
+            volumeMedio,
+            menorVolume,
+            maiorVolume,
+            pesoLata,
+            pesoTampa,
+            densidade,
+            limiar,
+            quantidade
+        };
+    
+        try {
+            const response = await fetch("http://localhost:3000/salvar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dados)
+            });
+    
+            const result = await response.json();
+            if (response.ok) {
+                alert("Dados salvos com sucesso!");
+            } else {
+                alert("Erro ao salvar os dados: " + result.error);
+            }
+        } catch (error) {
+            alert("Erro ao conectar com o servidor.");
+        }
+    });
+    
 });
