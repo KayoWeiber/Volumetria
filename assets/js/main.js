@@ -130,7 +130,7 @@ calcularBtn.addEventListener("click", () => {
 
     trocarTela(pesosForm, resultadoDiv);
     resultadoDiv.innerHTML = mensagem;
-    btnSalvar.classList.remove("hidden");
+    //btnSalvar.classList.remove("hidden");
 });
 
 // Salvar dados no backend via fetch com async/await
