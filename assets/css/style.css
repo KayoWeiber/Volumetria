@@ -76,11 +76,16 @@ button:hover {
     display: none !important;
 }
 
-.active {
-    display: block !important;
-}
+.resultado .ok { color: green; }
+.resultado .erro { color: red; }
+.resultado button { margin-top: 20px; }
 
-.resultado, #configInicial {
+.fade-in { animation: fadeIn 0.4s ease; }
+.fade-out { animation: fadeOut 0.3s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes fadeOut { to { opacity: 0; transform: translateY(-8px); } }
+
+.resultado {
     margin-top: 24px;
     padding: 20px;
     background: #f3eaff;

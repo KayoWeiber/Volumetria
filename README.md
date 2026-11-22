@@ -41,10 +41,34 @@ Tudo isso com uma interface intuitiva e fácil de usar, projetada para usuários
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5:** Estrutura da aplicação.
-- **CSS3:** Estilização responsiva e amigável para o usuário.
-- **JavaScript:** Lógica do cálculo e transição entre telas.
-- **Local Storage:** Armazenamento das configurações iniciais.
+- **HTML5 / CSS3 / JavaScript (ES Modules):** sem dependências nem build.
+- **Local Storage:** armazenamento das configurações iniciais.
+
+---
+
+## 🗂️ Estrutura
+
+```
+index.html
+assets/
+├── css/style.css
+├── images/logo-kw.svg
+└── js/
+    ├── main.js      # orquestra os eventos e o fluxo entre telas
+    ├── calculo.js   # regras de negócio (funções puras)
+    ├── ui.js        # DOM: troca de telas e renderização
+    └── storage.js   # persistência da configuração
+```
+
+## ▶️ Como rodar
+
+Por usar ES Modules, o app precisa ser servido por HTTP (abrir o `index.html` direto via `file://` não funciona):
+
+```
+python -m http.server 8000
+```
+
+e acessar `http://localhost:8000`.
 
 ---
 

@@ -3,61 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-png" href="./assets/images/logo-kw.svg">
+    <link rel="icon" type="image/svg+xml" href="./assets/images/logo-kw.svg">
     <title>Volumetria de Cerveja</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <section class="container">
+    <main class="container">
         <!-- Tela Inicial -->
-        <div id="telaInicial" class="active">
+        <section id="telaInicial">
             <img src="./assets/images/logo-kw.svg" alt="Logo KW" class="logo">
             <h1>Volumetria</h1>
-            <button id="btnUnidade">Unidade</button>
-            <button id="btnPacote">Pacote</button>
-        </div>
+            <button type="button" id="btnUnidade">Unidade</button>
+            <button type="button" id="btnPacote">Pacote</button>
+        </section>
 
         <!-- Tela de Configuração -->
         <form id="configForm" class="hidden">
             <h1>Configuração Inicial</h1>
-            
+
             <label for="pesoLata">Peso da lata vazia (g):</label>
-            <input type="number" id="pesoLata" step="0.01" required>
+            <input type="number" id="pesoLata" step="0.01" min="0.01" required>
 
             <label for="pesoTampa">Peso da tampa (g):</label>
-            <input type="number" id="pesoTampa" step="0.01" required>
+            <input type="number" id="pesoTampa" step="0.01" min="0.01" required>
 
             <label for="densidade">Densidade da cerveja (g/mL):</label>
-            <input type="number" id="densidade" step="0.01" required>
+            <input type="number" id="densidade" step="0.01" min="0.01" required>
 
             <label for="limiar">Limiar de enchimento (mL):</label>
-            <input type="number" id="limiar" required>
+            <input type="number" id="limiar" min="1" required>
 
-            <label for="quantidade" id="quantidadeLabel" class="hidden">Quantidade no pacote:</label>
-            <select id="quantidade" class="hidden">
-                <option value="12">12</option>
-                <option value="15">15</option>
-            </select>
+            <div id="campoQuantidade" class="hidden">
+                <label for="quantidade">Quantidade no pacote:</label>
+                <select id="quantidade">
+                    <option value="12">12</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
 
-            <button type="button" id="iniciar">Iniciar</button>
+            <button type="submit">Iniciar</button>
         </form>
 
         <!-- Tela de Pesos -->
         <form id="pesosForm" class="hidden">
             <h1>Entrada de Pesos</h1>
             <div id="pesosInputs"></div>
-            <button type="button" id="calcular">Calcular</button>
+            <button type="submit">Calcular</button>
         </form>
 
         <!-- Tela de Resultados -->
-        <div id="resultado" class="hidden">
-            <div id="configInicial"></div>
-        </div>
-        <div id="salvar" class="hidden">
-            <button id="salvarConfig">Salvar no banco de Dados</button>
-        
-        </div>
-    </section>
-    <script src="./assets/js/main.js"></script>
+        <section id="resultado" class="resultado hidden"></section>
+    </main>
+    <script type="module" src="./assets/js/main.js"></script>
 </body>
 </html>
