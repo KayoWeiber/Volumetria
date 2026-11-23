@@ -50,14 +50,17 @@ Tudo isso com uma interface intuitiva e fácil de usar, projetada para usuários
 
 ```
 index.html
-assets/
-├── css/style.css
+src/
+├── css/
+│   ├── tokens.css      # cores, raios e sombras (tema claro/escuro)
+│   ├── base.css        # reset, layout e animações
+│   └── components.css  # botões, campos, stepper, gráfico...
 ├── images/logo-kw.svg
 └── js/
-    ├── main.js      # orquestra os eventos e o fluxo entre telas
-    ├── calculo.js   # regras de negócio (funções puras)
-    ├── ui.js        # DOM: troca de telas e renderização
-    └── storage.js   # persistência da configuração
+    ├── main.js         # orquestra os eventos e o fluxo entre telas
+    ├── calculo.js      # regras de negócio (funções puras)
+    ├── ui.js           # DOM: troca de telas e renderização
+    └── storage.js      # persistência da configuração
 ```
 
 ## ▶️ Como rodar

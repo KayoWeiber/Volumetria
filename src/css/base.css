@@ -1,0 +1,64 @@
+/* Reset e layout geral. */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg) var(--bg-accent) no-repeat fixed;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: 1.6rem; font-weight: 750; letter-spacing: -0.02em; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.topbar img {
+  width: 40px;
+  height: 40px;
+  filter: var(--logo-filter);
+}
+.topbar strong { display: block; font-size: 1.1rem; letter-spacing: -0.01em; }
+.topbar span { font-size: 0.85rem; color: var(--text-muted); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.tela { display: flex; flex-direction: column; gap: 22px; }
+.tela-header { display: flex; flex-direction: column; gap: 6px; }
+.tela-header p { color: var(--text-muted); }
+
+.hidden { display: none !important; }
+
+.fade-in { animation: fadeIn 0.35s ease; }
+.fade-out { animation: fadeOut 0.2s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes fadeOut { to { opacity: 0; transform: translateY(-6px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .fade-out { animation: none; }
+}
+
+@media (max-width: 480px) {
+  .card { padding: 20px 16px; border-radius: var(--radius); }
+  h1 { font-size: 1.4rem; }
+}

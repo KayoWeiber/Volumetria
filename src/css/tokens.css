@@ -1,0 +1,58 @@
+/* Design tokens: cores, espaçamento, raios e sombras. */
+:root {
+  --bg: #f4f2fb;
+  --bg-accent: radial-gradient(1200px 600px at 10% -10%, #e4dcff 0%, transparent 60%),
+                radial-gradient(900px 500px at 110% 10%, #ffe6c7 0%, transparent 55%);
+  --surface: #ffffff;
+  --surface-2: #f7f5fd;
+  --border: #e3dff1;
+  --text: #1d1a2b;
+  --text-muted: #6b6785;
+
+  --primary: #6d4aff;
+  --primary-hover: #5836e6;
+  --primary-soft: #ece8ff;
+  --on-primary: #ffffff;
+
+  --ok: #12805c;
+  --ok-soft: #dcf5ea;
+  --danger: #c4314b;
+  --danger-soft: #fde4e9;
+  --amber: #e8a317;
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --shadow: 0 1px 2px rgba(29, 26, 43, 0.06), 0 12px 32px rgba(70, 50, 140, 0.12);
+  --focus: 0 0 0 4px rgba(109, 74, 255, 0.25);
+
+  --logo-filter: none;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12101c;
+    --bg-accent: radial-gradient(1200px 600px at 10% -10%, #2a1f5c 0%, transparent 60%),
+                  radial-gradient(900px 500px at 110% 10%, #3a2610 0%, transparent 55%);
+    --surface: #1b1829;
+    --surface-2: #231f35;
+    --border: #322d4a;
+    --text: #f1eefc;
+    --text-muted: #a29cc0;
+
+    --primary: #8b70ff;
+    --primary-hover: #a08aff;
+    --primary-soft: #2c2552;
+    --on-primary: #130f26;
+
+    --ok: #4ad8a3;
+    --ok-soft: #123b2f;
+    --danger: #ff7d95;
+    --danger-soft: #451a25;
+
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.45);
+    --logo-filter: invert(1);
+    color-scheme: dark;
+  }
+}

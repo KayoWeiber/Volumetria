@@ -2,7 +2,8 @@
 
 export const TOLERANCIA_ML = 2;
 
-const arredondar = (n) => Math.round(n * 100) / 100;
+// Mesmo arredondamento da versão original (toFixed(2)).
+const arredondar = (n) => Number(n.toFixed(2));
 
 export function calcularVolume(pesoCheio, { pesoLata, pesoTampa, densidade }) {
   return arredondar((pesoCheio - (pesoLata + pesoTampa)) / densidade);
@@ -19,6 +20,8 @@ export function calcularResultados(pesosCheios, config) {
     volumeMedio,
     menorVolume: Math.min(...volumes),
     maiorVolume: Math.max(...volumes),
-    dentroDoPadrao: Math.abs(volumeMedio - config.limiar) <= TOLERANCIA_ML,
+    dentroDoPadrao:
+      volumeMedio >= config.limiar - TOLERANCIA_ML &&
+      volumeMedio <= config.limiar + TOLERANCIA_ML,
   };
 }
